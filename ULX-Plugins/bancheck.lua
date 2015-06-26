@@ -4,7 +4,7 @@ function ulx.bancheck (calling_ply, target_ply)
 	calling_ply:SendLua([[gui.OpenURL('http://gflclan.com/gmodbans/index.php?p=banlist&advSearch=]]..target_ply:SteamID()..[[&advType=steamid')]])
 end
 
-local bancheck = ulx.command(CATEGORY_NAME, "ulx bancheck", ulx.bancheck)
+local bancheck = ulx.command(CATEGORY_NAME, "ulx bancheck", ulx.bancheck, "!bancheck")
 bancheck:addParam{ type=ULib.cmds.PlayerArg }
 bancheck:defaultAccess(ULib.ACCESS_ALL)
 bancheck:help ("Displays the player's SteamID")
