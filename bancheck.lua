@@ -1,6 +1,6 @@
 function ulx.bancheck (calling_ply, target_ply)
 	PrintMessage(HUD_PRINTTALK, "SteamID copied!")
-	SetClipboardText(target_ply:SteamID())
+	target_ply:copyid()
 	calling_ply:SendLua([[gui.OpenURL('http://gflclan.com/gmodbans/index.php?p=banlist&advSearch=]]..target_ply:SteamID()..[[&advType=steamid')]])
 end
 
