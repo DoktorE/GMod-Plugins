@@ -1,8 +1,5 @@
 function ulx.pickid(calling_ply, target_ply)
 
-	-- store results to table and display most recent result on call.
-	-- have a list of recent grabs
-	-- be able to grab SteamID of owner of prop (No idea how)
 	tagged_players = {}
 
 	tag = calling_ply:GetEyeTrace()
@@ -16,6 +13,7 @@ function ulx.pickid(calling_ply, target_ply)
 		table.insert("SteamID: " .. tag.Entity():GetPlayer():SteamID() .. "\n")
 		table.insert("Prop: " .. tag.Entity())
 		table.insert("----------------------------")
+
 	end
 
 	else if tag.Entity():IsPlayer then
@@ -30,6 +28,7 @@ function ulx.pickid(calling_ply, target_ply)
 	end
 
 	else
+
 		PrintMessage(HUD_PRINTTALK, "You must be looking at a player or an entity!")
 
 	end
@@ -39,6 +38,13 @@ function ulx.pickid(calling_ply, target_ply)
 		table.Empty(tagged_players)
 
 	end
+
+	function printpicks()
+	-- As of 12:23 am on the hottest day this summer, I can't figure out how to go through with this
+
+
+	end
+		
 end
 hook.Add("PlayerDisconnected", "pdisconnectedhook", pdiscon)
 
