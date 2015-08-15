@@ -67,6 +67,10 @@ function ulx.unpmute(calling_ply, target_ply)
 	end
 end
 
+local unpmute = ulx.command("Custom", "ulx unpmute", ulx.unpmute, "!unpmute")
+unpmute:defaultAccess(ULib.ACCESS_ADMIN)
+unpmute:help("Unpmutes a player")
+
 -- function to list players who are pmuted
 function ulx.printpmutes(calling_ply)
 
@@ -89,7 +93,7 @@ function ulx.printpmutes(calling_ply)
 end
 
 local printpmutes = ulx.command("Custom", "ulx printpmutes", ulx.printpmutes, "!printpmutes", false)
-printmutes::defaultAccess(ULib.ACCESS_ADMIN)
+printmutes:defaultAccess(ULib.ACCESS_ADMIN)
 printpmutes:help("Prints players who are pmuted")
 
 -- ULX PMute plugin created by GFL Doktor 2015 
