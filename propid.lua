@@ -9,10 +9,10 @@ function ulx.pickid(calling_ply, target_ply)
 		PrintMessage(HUD_PRINTTALK, "Copied Owner's SteamID to clipboard!")
 		SetClipboardText(tag.Entity():GetOwner():SteamID())
 
-		table.insert("Name: " .. tag.Entity():GetPlayer():Nick .. "\n")
-		table.insert("SteamID: " .. tag.Entity():GetPlayer():SteamID() .. "\n")
-		table.insert("Prop: " .. tag.Entity())
-		table.insert("----------------------------")
+		table.insert("Name: " .. tag.Entity():GetPlayer():Nick .. "\n", tagged_players)
+		table.insert("SteamID: " .. tag.Entity():GetPlayer():SteamID() .. "\n", tagged_players)
+		table.insert("Prop: " .. tag.Entity(), tagged_players)
+		table.insert("----------------------------", tagged_players)
 
 	end
 
@@ -21,9 +21,9 @@ function ulx.pickid(calling_ply, target_ply)
 		PrintMessage(HUD_PRINTTALK, "Copied player's SteamID to clipboard")
 		SetClipboardText(tag.Entity():SteamID())
 
-		table.insert("Name: " .. tag.Entity():GetPlayer():Nick .. "\n")
-		table.insert("SteamID: " .. tag.Entity():SteamID() .. "\n")
-		table.insert("----------------------------")
+		table.insert("Name: " .. tag.Entity():GetPlayer():Nick .. "\n", tagged_players)
+		table.insert("SteamID: " .. tag.Entity():SteamID() .. "\n", tagged_players)
+		table.insert("----------------------------", tagged_players)
 
 	end
 
@@ -40,8 +40,10 @@ function ulx.pickid(calling_ply, target_ply)
 	end
 
 	function printpicks()
-	-- As of 12:23 am on the hottest day this summer, I can't figure out how to go through with this
 
+		for i in tagged_players
+			PrintMessage(HUD_PRINTTALK, i)
+		end
 
 	end
 		
@@ -49,6 +51,11 @@ end
 hook.Add("PlayerDisconnected", "pdisconnectedhook", pdiscon)
 
 local pickid = ulx.command(CATEGORY_NAME, "ulx pickid", ulx.pickid, "!pickid")
-pmute:addParam {type=ULib.cmds.PlayersArg}
-pmute:defaultAccess(ULib.ACCESS_ALL)
-pmute:help("Grabs SteamID of player or owner of prop")
+printpicks:addParam {type=ULib.cmds.PlayerArg}
+printpicks:defaultAccess(ULib.ACCESS_ALL)
+printpicks:help("Grabs SteamID of player or owner of prop")
+
+local printpicks = ulx.command(CATEGORY_NAME, "ulx printpicks", ulx.printpicks, "!printpicks")
+printpicks:addParam {type=ULib.cmds.PlayerArg}
+printpicks:defaultAccess(ULib.ACCESS_ALL)
+printpicks:help("Prints picks and stuff")
