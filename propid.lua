@@ -41,7 +41,7 @@ function ulx.pickid(calling_ply, target_ply)
 
 	function printpicks()
 
-		for i in tagged_players
+		for i, k in ipairs(tagged_players) do
 			PrintMessage(HUD_PRINTTALK, i)
 		end
 
